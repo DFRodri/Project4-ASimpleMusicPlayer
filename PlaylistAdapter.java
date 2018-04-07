@@ -14,13 +14,12 @@ import java.util.ArrayList;
 
 //Class of the adapter to be used in our MainActivity
 //Makes use of ViewHolder to make things faster since the main point of this project was to recycle data
-public class SongsAdapter extends ArrayAdapter<Song> {
+public class PlaylistAdapter extends ArrayAdapter<Song> {
 
     //Needs to be public to be accessed by MainActivity.java
-    public SongsAdapter(Activity context, ArrayList<Song> songList) {
+    public PlaylistAdapter(Activity context, ArrayList<Song> songList) {
         super(context, 0, songList);
     }
-
     //The class that holds the views that will be recycled
     private static class ViewHolder {
         protected TextView song, group, duration;
@@ -62,7 +61,7 @@ public class SongsAdapter extends ArrayAdapter<Song> {
         String newSong = currentSong.getNewSongName();
         String newGroup = currentSong.getNewGroupName();
         long newDuration = currentSong.getNewSongDuration();
-        boolean newCheck = currentSong.getNewCheck();
+        boolean newCheck = currentSong.getNewPlaylistCheck();
 
         //The following wall of code takes care of converting the ms fetched from the getNewSongDuration to hh:mm:ss
         //We want to see something that we can understand without much effort, right?
@@ -91,11 +90,11 @@ public class SongsAdapter extends ArrayAdapter<Song> {
         holder.group.setText(newGroup);
         holder.duration.setText(newFinalDuration);
 
-        //You may wonder why is this here inside an if but there is a reason for that
-        //When we go back from the PlayerActivity to the MainActivity we will use the same songs already selected
-        //This makes sure that we're editing our previous selections instead of making always a playlist from zero
-        //If someone wants to do one, they can press the refresh button as a shortcut
-        //Handy, right?
+        //You may wonder why is this here inside an if but there is a reason for that and isn't simply
+        //re-use of code from the SongsAdapter.java
+        //When we select a song to play (do not confuse with selecting one to add to the playlist),
+        //it's displayed in the PlayerActivity, in that "fancy playlist".
+        //Because the user needs to know which song was selected, this makes the song selected "active"
         if (!newCheck) {
             holder.checked.setBackgroundColor(holder.checked.getResources().getColor(R.color.default_color));
         } else {
