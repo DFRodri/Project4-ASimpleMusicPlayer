@@ -73,7 +73,7 @@ public class PlayerActivity extends AppCompatActivity {
     //just a lazy boolean that is passed from one activity to another
     //lazy way to check if it's empty or not
     //(yes, I know about <arrayList>.isEmpty()... but come, don't make me do that after implementing this :( )
-    boolean isEmpty;
+    private boolean isEmpty;
 
     //We need this to know when to swap the icon of our app from play to pause and vice-versa
     boolean playPauseButton = true;
