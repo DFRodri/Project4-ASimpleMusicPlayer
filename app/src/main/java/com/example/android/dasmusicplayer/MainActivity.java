@@ -361,65 +361,71 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     //It's a way to make our credits list a bit more fancy
     //(not really but it's a bit more interactive)
     public void openURL(int position) {
-        if (position == 1) {
-            Uri homepage = Uri.parse("http://www.flaticon.com");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 2) {
-            Uri homepage = Uri.parse("http://jakewharton.github.io/butterknife/");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 3) {
-            Uri homepage = Uri.parse("http://blog.antrromet.com/2013/07/handling-clicks-within-list-items-in.html?m=1");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 4) {
-            Uri homepage = Uri.parse("http://wiresareobsolete.com/2011/08/clickable-zones-in-listview-items/");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 5) {
-            Uri homepage = Uri.parse("https://stackoverflow.com/questions/20541821/get-listview-item-position-on-button-click/205420341");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 6) {
-            Uri homepage = Uri.parse("https://stackoverflow.com/questions/37963820/check-permissions-and-reload-the-activity");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 7) {
-            Uri homepage = Uri.parse("https://stackoverflow.com/questions/625433/how-to-convert-milliseconds-to-x-mins-x-seconds-in-java");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 8) {
-            Uri homepage = Uri.parse("https://stackoverflow.com/questions/13164054/viewholder-good-practice");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 9) {
-            Uri homepage = Uri.parse("https://stackoverflow.com/questions/3072173/how-to-call-a-method-after-a-delay-in-android");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 10) {
-            Uri homepage = Uri.parse("https://www.bignerdranch.com/blog/splash-screens-the-right-way/");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 11) {
-            Uri homepage = Uri.parse("https://code.tutsplus.com/tutorials/create-a-music-player-on-android-project-setup--mobile-22764");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
-        }
-        if (position == 12) {
-            Uri homepage = Uri.parse("https://code.tutsplus.com/tutorials/create-a-music-player-on-android-song-playback--mobile-22778");
-            Intent openLink = new Intent(Intent.ACTION_VIEW, homepage);
-            startActivity(openLink);
+        Uri homepage;
+        Intent openLink;
+        switch (position) {
+            case 1:
+                homepage = Uri.parse("http://www.flaticon.com");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 2:
+                homepage = Uri.parse("http://jakewharton.github.io/butterknife/");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 3:
+                homepage = Uri.parse("http://blog.antrromet.com/2013/07/handling-clicks-within-list-items-in.html?m=1");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 4:
+                homepage = Uri.parse("http://wiresareobsolete.com/2011/08/clickable-zones-in-listview-items/");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 5:
+                homepage = Uri.parse("https://stackoverflow.com/questions/20541821/get-listview-item-position-on-button-click/205420341");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 6:
+                homepage = Uri.parse("https://stackoverflow.com/questions/37963820/check-permissions-and-reload-the-activity");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 7:
+                homepage = Uri.parse("https://stackoverflow.com/questions/625433/how-to-convert-milliseconds-to-x-mins-x-seconds-in-java");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 8:
+                homepage = Uri.parse("https://stackoverflow.com/questions/13164054/viewholder-good-practice");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 9:
+                homepage = Uri.parse("https://stackoverflow.com/questions/3072173/how-to-call-a-method-after-a-delay-in-android");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 10:
+                homepage = Uri.parse("https://www.bignerdranch.com/blog/splash-screens-the-right-way/");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 11:
+                homepage = Uri.parse("https://code.tutsplus.com/tutorials/create-a-music-player-on-android-project-setup--mobile-22764");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 12:
+                homepage = Uri.parse("https://code.tutsplus.com/tutorials/create-a-music-player-on-android-song-playback--mobile-22778");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            default:
+                break;
         }
     }
 

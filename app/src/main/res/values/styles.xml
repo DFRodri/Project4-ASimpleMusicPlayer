@@ -1,0 +1,165 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--Splash Screen-->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <!--Basic Style-->
+    <style name="BasicPlayerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/buttonHeight</item>
+    </style>
+
+    <style name="BasicListViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+
+    <!--Title-->
+    <style name="Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/buttonHeight</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--List LinearLayout-->
+    <style name="ListViewLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/buttonHeightXL</item>
+    </style>
+
+    <style name="PlayListLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="CurrentSongLinearLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <!--Generic Buttons-->
+    <style name="GenericButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleY">0.5</item>
+        <item name="android:scaleX">0.5</item>
+    </style>
+
+    <style name="GenericControlButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleY">0.5</item>
+        <item name="android:scaleX">0.5</item>
+    </style>
+
+    <!--Text-->
+    <style name="Text" parent="BasicPlayerStyle">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="CreditsText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/separatorCreditDisplayHeight</item>
+        <item name="android:textColor">@color/genericSeparator</item>
+    </style>
+
+    <style name="CreditsTextSubtitles" parent="CreditsText">
+        <item name="android:layout_alignLeft">@id/creditsBG</item>
+        <item name="android:layout_marginLeft">@dimen/marginGeneralUse</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CurrentSongText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/currentSong</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textSizeSongText</item>
+        <item name="android:layout_marginLeft">@dimen/marginGeneralUse</item>
+    </style>
+
+    <style name="CurrentSongDuration">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/currentDuration</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textSizeSongText</item>
+        <item name="android:layout_marginRight">@dimen/marginGeneralUse</item>
+    </style>
+
+    <style name="CurrentSongName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/smallMarginGeneralUse</item>
+        <item name="android:textSize">@dimen/textSizeSongName</item>
+        <item name="android:lines">3</item>
+    </style>
+
+    <style name="ListTextSong">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/textSizeSong</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="ListTextDuration">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/textSizeSong</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="ListTextCredits">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/textSizeSong</item>
+        <item name="android:lines">1</item>
+        <item name="android:layout_marginLeft">@dimen/marginGeneralUse</item>
+        <item name="android:layout_marginRight">@dimen/marginGeneralUse</item>
+    </style>
+
+    <!--Separator-->
+    <style name="HorizontalSeparator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/separatorHeight</item>
+        <item name="android:background">@color/genericSeparator</item>
+    </style>
+
+    <style name="VerticalSeparator">
+        <item name="android:layout_width">@dimen/separatorWidth</item>
+        <item name="android:layout_height">@dimen/separatorSongDisplayHeight</item>
+        <item name="android:background">@color/genericSeparator</item>
+    </style>
+
+    <style name="VerticalSeparatorTwo">
+        <item name="android:layout_width">@dimen/separatorWidth</item>
+        <item name="android:layout_height">@dimen/buttonHeightXL</item>
+    </style>
+
+    <!--Image-->
+    <style name="ButtonMainMenu">
+        <item name="android:layout_width">@dimen/buttonWidth</item>
+        <item name="android:layout_height">@dimen/buttonHeight</item>
+    </style>
+
+    <style name="CreditsBG">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/creditsBGHeight</item>
+        <item name="android:background">@color/mainMenu</item>
+    </style>
+
+</resources>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/PlayListLinearLayout"
+    android:background="@color/mainMenu"
+    android:orientation="vertical"
+    tools:context="com.example.android.dasmusicplayer.MainActivity">
+
+    <!--Menu Buttons-->
+    <RelativeLayout
+        android:id="@+id/mainMenu"
+        style="@style/Title"
+        android:layout_margin="@dimen/marginGeneralUse">
+
+        <ImageView
+            android:id="@+id/refresh"
+            style="@style/ButtonMainMenu"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/circular_arrows"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            style="@style/Title"
+            android:layout_toEndOf="@id/refresh"
+            android:layout_toLeftOf="@id/credits"
+            android:layout_toRightOf="@id/refresh"
+            android:layout_toStartOf="@id/credits"
+            android:fontFamily=""
+            android:text="@string/currentList"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/credits"
+            style="@style/ButtonMainMenu"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/logo"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+    <!--Separator/Divider-->
+    <View
+        android:id="@+id/separatorMainMenu"
+        style="@style/HorizontalSeparator"
+        android:layout_below="@id/mainMenu" />
+
+    <!--Credits Box-->
+    <ImageView
+        android:id="@+id/creditsBG"
+        style="@style/CreditsBG"
+        android:layout_below="@id/separatorMainMenu"
+        android:visibility="gone"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/creatorIndicator"
+        style="@style/VerticalSeparator"
+        android:layout_alignLeft="@id/creditsBG"
+        android:layout_alignStart="@id/creditsBG"
+        android:layout_alignTop="@id/creditsBG"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/smallMarginGeneralUse"
+        android:layout_marginStart="@dimen/smallMarginGeneralUse"
+        android:layout_marginTop="@dimen/marginGeneralUse"
+        android:background="@color/genericSeparator"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/creatorName"
+        style="@style/CreditsTextSubtitles"
+        android:layout_alignLeft="@id/creatorIndicator"
+        android:layout_alignStart="@id/creatorIndicator"
+        android:layout_alignTop="@id/creatorIndicator"
+        android:layout_marginBottom="@dimen/smallMarginGeneralUse"
+        android:gravity="center"
+        android:text="@string/author"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/resourcesIndicator"
+        style="@style/VerticalSeparator"
+        android:layout_alignLeft="@id/creatorIndicator"
+        android:layout_alignStart="@id/creatorIndicator"
+        android:layout_below="@id/creatorIndicator"
+        android:layout_marginTop="@dimen/smallMarginGeneralUse"
+        android:background="@color/genericSeparator"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/resourcesUsed"
+        style="@style/CreditsTextSubtitles"
+        android:layout_alignLeft="@id/creatorIndicator"
+        android:layout_alignStart="@id/creatorIndicator"
+        android:layout_below="@id/creatorName"
+        android:layout_marginBottom="@dimen/smallMarginGeneralUse"
+        android:gravity="center"
+        android:text="@string/resources"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/creditsList"
+        style="@style/CreditsText"
+        android:layout_above="@id/creditsMenuSeparator"
+        android:layout_alignEnd="@id/creditsBG"
+        android:layout_alignLeft="@id/creditsBG"
+        android:layout_alignRight="@id/creditsBG"
+        android:layout_alignStart="@id/creditsBG"
+        android:layout_below="@id/resourcesUsed"
+        android:layout_marginBottom="@dimen/marginGeneralUse"
+        android:layout_marginEnd="@dimen/marginGeneralUse"
+        android:layout_marginLeft="@dimen/marginGeneralUse"
+        android:layout_marginRight="@dimen/marginGeneralUse"
+        android:layout_marginStart="@dimen/marginGeneralUse"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/creditsMenuSeparator"
+        style="@style/HorizontalSeparator"
+        android:layout_below="@id/creditsBG"
+        android:visibility="gone" />
+
+    <!--List of Musics Available in the SD Card-->
+    <ListView
+        android:id="@+id/songList"
+        style="@style/BasicListViewStyle"
+        android:layout_above="@id/separatorNoticeMenu"
+        android:layout_below="@id/creditsBG" />
+
+    <!--Refresh/Reset Notice-->
+    <View
+        android:id="@+id/separatorNoticeMenu"
+        style="@style/HorizontalSeparator"
+        android:layout_above="@id/noticeMenu"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/noticeMenu"
+        style="@style/Title"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/marginGeneralUse"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/refreshWarning"
+            style="@style/Title"
+            android:fontFamily=""
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="@tools:sample/lorem/random" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

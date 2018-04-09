@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--General Use-->
+    <dimen name="marginGeneralUse">16dp</dimen>
+    <dimen name="smallMarginGeneralUse">8dp</dimen>
+
+    <!--Buttons-->
+    <dimen name="buttonHeight">48dp</dimen>
+    <dimen name="buttonWidth">48dp</dimen>
+    <dimen name="buttonHeightXL">58dp</dimen>
+    <dimen name="marginRightButtonSong">96dp</dimen>
+
+    <!--Separators-->
+    <dimen name="separatorHeight">4dp</dimen>
+    <dimen name="separatorWidth">4dp</dimen>
+    <dimen name="separatorSongDisplayHeight">24dp</dimen>
+    <dimen name="separatorCreditDisplayHeight">24dp</dimen>
+
+    <!--Text-->
+    <dimen name="textSizeSong">14sp</dimen>
+    <dimen name="textSizeSongName">24sp</dimen>
+    <dimen name="textSizeSongText">18sp</dimen>
+
+    <!--Credits-->
+    <dimen name="creditsBGHeight">300dp</dimen>
+    <dimen name="creditsPadding">10dp</dimen>
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ListViewLinearLayout"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/resourceName"
+        style="@style/ListTextCredits"
+        android:layout_marginTop="@dimen/smallMarginGeneralUse"
+        android:textColor="@color/textSongName"
+        tools:text="@tools:sample/lorem/random" />
+
+    <TextView
+        android:id="@+id/resourceURL"
+        style="@style/ListTextCredits"
+        android:layout_below="@id/resourceName"
+        android:layout_marginBottom="@dimen/smallMarginGeneralUse"
+        tools:text="@tools:sample/lorem/random" />
+
+</RelativeLayout>

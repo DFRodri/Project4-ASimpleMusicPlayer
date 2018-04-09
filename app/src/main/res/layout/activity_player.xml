@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/PlayListLinearLayout"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.android.dasmusicplayer.PlayerActivity">
+
+    <!--Go Back To Make Your Own Playlist Button-->
+    <ImageView
+        android:id="@+id/playerList"
+        style="@style/GenericControlButton"
+        android:layout_marginLeft="@dimen/marginGeneralUse"
+        android:layout_marginStart="@dimen/marginGeneralUse"
+        android:background="@drawable/list_of_three_items_with_squares_and_lines"
+        tools:ignore="ContentDescription" />
+
+    <!--Current Song Indicator-->
+    <View
+        android:id="@+id/separatorSongName"
+        style="@style/VerticalSeparator"
+        android:layout_below="@id/playerList" />
+
+    <TextView
+        android:id="@+id/currentSongTag"
+        style="@style/CurrentSongText"
+        android:layout_below="@id/playerList"
+        android:layout_toEndOf="@id/separatorSongName"
+        android:layout_toRightOf="@id/separatorSongName"
+        android:gravity="center_vertical" />
+
+    <!--Time Left from the Current Song-->
+    <TextView
+        android:id="@+id/currentSongDuration"
+        style="@style/CurrentSongDuration"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/playerList"
+        android:gravity="center_vertical" />
+
+    <!--Name of the Song Playing-->
+    <TextView
+        android:id="@+id/songPlaying"
+        style="@style/CurrentSongName"
+        android:layout_above="@id/separatorOne"
+        android:layout_below="@id/separatorSongName"
+        android:gravity="center"
+        tools:text="@tools:sample/lorem/random" />
+
+    <!--Music Player Buttons-->
+    <View
+        android:id="@+id/separatorOne"
+        style="@style/HorizontalSeparator"
+        android:layout_above="@id/playAndPause"
+        android:layout_marginLeft="@dimen/smallMarginGeneralUse"
+        android:layout_marginRight="@dimen/smallMarginGeneralUse" />
+
+    <ImageView
+        android:id="@+id/previous"
+        style="@style/GenericControlButton"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/marginGeneralUse"
+        android:layout_marginStart="@dimen/marginGeneralUse"
+        android:background="@drawable/first_track_multimedia_button"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/playAndPause"
+        style="@style/GenericControlButton"
+        android:layout_centerInParent="true"
+        android:background="@drawable/play_arrow"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/next"
+        style="@style/GenericControlButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/marginGeneralUse"
+        android:layout_marginRight="@dimen/marginGeneralUse"
+        android:background="@drawable/forward_button_for_multimedia"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/separatorTwo"
+        style="@style/HorizontalSeparator"
+        android:layout_below="@id/playAndPause"
+        android:layout_marginLeft="@dimen/smallMarginGeneralUse"
+        android:layout_marginRight="@dimen/smallMarginGeneralUse" />
+
+    <!--Custom PlayList-->
+    <ListView
+        android:id="@+id/currentPlayList"
+        style="@style/BasicListViewStyle"
+        android:layout_above="@id/shuffle"
+        android:layout_below="@id/separatorTwo"
+        android:layout_marginEnd="@dimen/marginGeneralUse"
+        android:layout_marginLeft="@dimen/marginGeneralUse"
+        android:layout_marginRight="@dimen/marginGeneralUse"
+        android:layout_marginStart="@dimen/marginGeneralUse"
+        android:layout_marginTop="@dimen/marginGeneralUse" />
+
+    <!--Shuffle Button-->
+    <ImageView
+        android:id="@+id/shuffle"
+        style="@style/GenericControlButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/marginGeneralUse"
+        android:layout_marginStart="@dimen/marginGeneralUse"
+        android:background="@drawable/double_arrow_cross_of_shuffle"
+        android:scaleType="center"
+        tools:ignore="ContentDescription" />
+
+    <!--Repeat Button-->
+    <ImageView
+        android:id="@+id/repeat"
+        style="@style/GenericControlButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="@dimen/marginGeneralUse"
+        android:layout_marginRight="@dimen/marginGeneralUse"
+        android:background="@drawable/returning_curved_right_arrow"
+        android:scaleType="center"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

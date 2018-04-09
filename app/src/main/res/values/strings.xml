@@ -1,0 +1,27 @@
+<resources>
+    <!--APP Name-->
+    <string name="app_name">Diogo\'s Simple Music Player</string>
+
+    <!--Labels-->
+    <string name="splashScreen">Splash Screen</string>
+    <string name="musicPlayer">Music Player</string>
+    <string name="songList">List of Songs Loaded</string>
+
+    <!--Credits-->
+    <string name="author">Created by Diogo Rodrigues</string>
+    <string name="resources">Resources used:</string>
+    <string name="close">Close</string>
+
+    <!--Temp Values-->
+    <string name="songName">Song Name</string>
+    <string name="groupName">Group Name</string>
+
+    <!--Music Player-->
+    <string name="currentSong">Current Song</string>
+    <string name="currentDuration">--:--</string>
+
+    <!--Playlist-->
+    <string name="currentList">A Simple Music Player by A Simple Person</string>
+    <string name="listUpdatedNotice">SD Card Scanned! List Updated!</string>
+
+</resources>

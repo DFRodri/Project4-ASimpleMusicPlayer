@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ListViewLinearLayout">
+
+    <View
+        android:id="@+id/activeSong"
+        style="@style/VerticalSeparatorTwo" />
+
+    <TextView
+        android:id="@+id/songName"
+        style="@style/ListTextSong"
+        android:layout_marginEnd="@dimen/marginRightButtonSong"
+        android:layout_marginLeft="@dimen/marginGeneralUse"
+        android:layout_marginRight="@dimen/marginRightButtonSong"
+        android:layout_marginStart="@dimen/marginGeneralUse"
+        android:layout_marginTop="@dimen/smallMarginGeneralUse"
+        android:textColor="@color/textSongName"
+        tools:text="@tools:sample/lorem/random" />
+
+    <TextView
+        android:id="@+id/groupName"
+        style="@style/ListTextSong"
+        android:layout_below="@id/songName"
+        android:layout_marginBottom="@dimen/smallMarginGeneralUse"
+        android:layout_marginEnd="@dimen/marginRightButtonSong"
+        android:layout_marginLeft="@dimen/marginGeneralUse"
+        android:layout_marginRight="@dimen/marginRightButtonSong"
+        android:layout_marginStart="@dimen/marginGeneralUse"
+        tools:text="@tools:sample/lorem/random" />
+
+    <TextView
+        android:id="@+id/songDuration"
+        style="@style/ListTextDuration"
+        android:layout_toLeftOf="@id/listSong"
+        android:layout_toStartOf="@id/listSong"
+        tools:text="@tools:sample/date/hhmm" />
+
+
+    <ImageView
+        android:id="@+id/listSong"
+        style="@style/GenericButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/right_arrow_angle"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>
