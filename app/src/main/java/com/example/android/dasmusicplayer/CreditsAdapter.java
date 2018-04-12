@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 //Class of the adapter to be used in our MainActivity
 //Makes use of ViewHolder to make things faster since the main point of this project was to recycle data
 public class CreditsAdapter extends ArrayAdapter<Credits> {
@@ -20,9 +23,17 @@ public class CreditsAdapter extends ArrayAdapter<Credits> {
     public CreditsAdapter(Activity context, ArrayList<Credits> creditsList) {
         super(context, 0, creditsList);
     }
+
     //The class that holds the views that will be recycled
-    private static class ViewHolder {
-        protected TextView creatorName, creatorURL;
+    static class ViewHolder {
+        @BindView(R.id.resourceName)
+        TextView creatorName;
+        @BindView(R.id.resourceURL)
+        TextView creatorURL;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
     //The getView method to display (return) each row of what we want as we want with a certain layout as a base
@@ -33,21 +44,16 @@ public class CreditsAdapter extends ArrayAdapter<Credits> {
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View row = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
 
-        if (row == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.credits_list, parent, false);
-
-            holder = new ViewHolder();
-
-            holder.creatorName = row.findViewById(R.id.resourceName);
-            holder.creatorURL = row.findViewById(R.id.resourceURL);
-
-            row.setTag(holder);
+        if (convertView != null) {
+            holder = (ViewHolder) convertView.getTag();
         } else {
-            holder = (ViewHolder) row.getTag();
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.credits_list, parent, false);
+
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
         }
 
         //each element (Item) of our list has data stored in different positions
@@ -62,7 +68,7 @@ public class CreditsAdapter extends ArrayAdapter<Credits> {
         holder.creatorName.setText(newName);
         holder.creatorURL.setText(newURL);
 
-        return row;
+        return convertView;
 
     }
 }

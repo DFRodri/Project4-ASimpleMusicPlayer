@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 //Class of the adapter to be used in our MainActivity
 //Makes use of ViewHolder to make things faster since the main point of this project was to recycle data
 public class SongsAdapter extends ArrayAdapter<Song> {
@@ -22,9 +25,19 @@ public class SongsAdapter extends ArrayAdapter<Song> {
     }
 
     //The class that holds the views that will be recycled
-    private static class ViewHolder {
-        protected TextView song, group, duration;
-        protected View checked;
+    static class ViewHolder {
+        @BindView(R.id.songName)
+        TextView song;
+        @BindView(R.id.groupName)
+        TextView group;
+        @BindView(R.id.songDuration)
+        TextView duration;
+        @BindView(R.id.activeSong)
+        View checked;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
     //The getView method to display (return) each row of what we want as we want with a certain layout as a base
@@ -35,23 +48,16 @@ public class SongsAdapter extends ArrayAdapter<Song> {
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View row = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
 
-        if (row == null) {
+        if (convertView != null) {
+            holder = (ViewHolder) convertView.getTag();
+        } else {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.song_list, parent, false);
+            convertView = inflater.inflate(R.layout.song_list, parent, false);
 
-            holder = new ViewHolder();
-
-            holder.song = row.findViewById(R.id.songName);
-            holder.group = row.findViewById(R.id.groupName);
-            holder.duration = row.findViewById(R.id.songDuration);
-            holder.checked = row.findViewById(R.id.activeSong);
-
-            row.setTag(holder);
-        } else{
-            holder = (ViewHolder) row.getTag();
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
         }
 
         //each element (Item) of our list has data stored in different positions
@@ -102,6 +108,6 @@ public class SongsAdapter extends ArrayAdapter<Song> {
             holder.checked.setBackgroundColor(holder.checked.getResources().getColor(R.color.pressed_color));
         }
 
-        return row;
+        return convertView;
     }
 }

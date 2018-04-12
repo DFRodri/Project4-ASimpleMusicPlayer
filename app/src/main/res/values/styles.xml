@@ -54,15 +54,15 @@
     <style name="GenericButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:scaleY">0.5</item>
-        <item name="android:scaleX">0.5</item>
+        <item name="android:padding">@dimen/buttonsPadding</item>
+        <item name="android:layout_margin">@dimen/marginGeneralUse</item>
     </style>
 
     <style name="GenericControlButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:scaleY">0.5</item>
-        <item name="android:scaleX">0.5</item>
+        <item name="android:padding">@dimen/buttonsPadding</item>
+        <item name="android:layout_margin">@dimen/marginGeneralUse</item>
     </style>
 
     <!--Text-->

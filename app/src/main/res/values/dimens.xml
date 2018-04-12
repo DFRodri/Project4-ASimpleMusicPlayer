@@ -9,6 +9,7 @@
     <dimen name="buttonWidth">48dp</dimen>
     <dimen name="buttonHeightXL">58dp</dimen>
     <dimen name="marginRightButtonSong">96dp</dimen>
+    <dimen name="buttonsPadding">16dp</dimen>
 
     <!--Separators-->
     <dimen name="separatorHeight">4dp</dimen>
