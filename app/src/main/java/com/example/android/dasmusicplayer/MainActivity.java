@@ -354,6 +354,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         creditsList.add(new Credits("Big Nerd Ranch", "bignerdranch.com/blog/splash-screens-the-right-way"));
         creditsList.add(new Credits("Envato Tuts+", "code.tutsplus.com/tutorials/create-a-music-player-on-android-project-setup--mobile-22764"));
         creditsList.add(new Credits("Envato Tuts+", "code.tutsplus.com/tutorials/create-a-music-player-on-android-song-playback--mobile-22778"));
+        creditsList.add(new Credits("Kristan Krispy Uccello", "gist.github.com/kuccello/5816882#file-musicplayer-java-L98"));
     }
 
     //And the same can be said of this
@@ -421,6 +422,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case 12:
                 homepage = Uri.parse("https://code.tutsplus.com/tutorials/create-a-music-player-on-android-song-playback--mobile-22778");
+                openLink = new Intent(Intent.ACTION_VIEW, homepage);
+                startActivity(openLink);
+                break;
+            case 13:
+                homepage = Uri.parse("https://gist.github.com/kuccello/5816882#file-musicplayer-java-L98");
                 openLink = new Intent(Intent.ACTION_VIEW, homepage);
                 startActivity(openLink);
                 break;

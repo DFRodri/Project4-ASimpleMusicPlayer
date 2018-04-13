@@ -64,11 +64,11 @@ public class PlayerActivity extends AppCompatActivity {
 
     //ArrayLists populated with the audio data
     //Why two? Because we work with references from one to another and it's easier to work with a smaller list
-    ArrayList<Song> currentSongList = new ArrayList<>();
-    ArrayList<Song> songList = new ArrayList<>();
+    private ArrayList<Song> currentSongList = new ArrayList<>();
+    private ArrayList<Song> songList = new ArrayList<>();
 
     //Holds the name of the song to be displayed at the top
-    String currentSongName;
+    private String currentSongName;
 
     //just a lazy boolean that is passed from one activity to another
     //lazy way to check if it's empty or not
@@ -76,31 +76,75 @@ public class PlayerActivity extends AppCompatActivity {
     private boolean isEmpty;
 
     //We need this to know when to swap the icon of our app from play to pause and vice-versa
-    boolean playPauseButton = true;
+    private boolean playPauseButton = true;
 
     //We need it to play music
-    MediaPlayer mp = new MediaPlayer();
+    private MediaPlayer mp = new MediaPlayer();
 
     //A global way to know which music is selected
-    int currentSongSelected;
+    private int currentSongSelected;
 
     //If someone wants to play and audio non-stop, we need to know that
     //I know about setLooping() but it doesn't work properly in some older versions of Android
     //so this together with seekTo(0) is a good workaround
-    boolean loop = false;
+    private boolean loop = false;
 
     //Noticed an issue with my loop (I think it was when size()-1 = 1 and position = 1.
     //The way I found, after using Log.i, to fix it was to use another boolean to force it to work as I wanted)
-    boolean repeaterOn = false;
+    private boolean repeaterOn = false;
 
     //It's pretty much used like mp.isPlaying() but works where it doesn't work
-    boolean hasStarted = false;
+    private boolean hasStarted = false;
 
     //Variable used to store/update the time left of an audio
-    String newFinalDuration;
+    private String newFinalDuration;
 
     //Handles the time left of the song in another thread so we can process the rest without any issues
     private Handler currentDurationSong = new Handler();
+
+    /**To help with Logs
+    private String TAG = "INFO ";
+
+    //Handle the audioFocus
+    boolean audioFocusGranted = false;
+    private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            switch (focusChange) {
+                case AudioManager.AUDIOFOCUS_GAIN:
+                    Log.i(TAG, "AUDIOFOCUS_GAIN");
+                    // Set volume level to desired levels
+                    playSong();
+                    break;
+                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT:
+                    Log.i(TAG, "AUDIOFOCUS_GAIN_TRANSIENT");
+                    // You have audio focus for a short time
+                    playSong();
+                    break;
+                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK:
+                    Log.i(TAG, "AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK");
+                    // Play over existing audio
+                    playSong();
+                    break;
+                case AudioManager.AUDIOFOCUS_LOSS:
+                    Log.e(TAG, "AUDIOFOCUS_LOSS");
+                    playSong();
+                    break;
+                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+                    Log.e(TAG, "AUDIOFOCUS_LOSS_TRANSIENT");
+                    // Temporary loss of audio focus - expect to get it back - you can keep your resources around
+                    playPauseButton = true;
+                    playSong();
+                    break;
+                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+                    Log.e(TAG, "AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
+                    // Lower the volume
+                    break;
+                default:
+                    break;
+            }
+        }
+    };**/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +185,7 @@ public class PlayerActivity extends AppCompatActivity {
         playSong();
 
         //To update the time left of the song playing
-        if (mp.isPlaying()){
+        if (mp.isPlaying()) {
             UpdateTimeDisplayed();
         }
 
@@ -289,7 +333,7 @@ public class PlayerActivity extends AppCompatActivity {
                 songCheck = view.findViewById(R.id.activeSong);
 
                 //Changes the visual indicator of the song previously playing and the current one
-                if (songCheck.getSolidColor() != getResources().getColor(R.color.pressed_color) && currentSongList.size() != 1) {
+                if (songCheck.getSolidColor() != getResources().getColor(R.color.pressed_color) && currentSongSelected != position) {
                     songCheck.setBackgroundColor(songCheck.getResources().getColor(R.color.pressed_color));
                     currentSongList.get(position).setNewPlaylistCheck(true);
 
@@ -346,7 +390,7 @@ public class PlayerActivity extends AppCompatActivity {
         if (currentSongSelected > currentSongList.size() - 1) {
             currentSongSelected = currentSongList.size() - 1;
         }
-        if (repeaterOn){
+        if (repeaterOn) {
             currentSongSelected = 0;
         }
         currentSongList.get(currentSongSelected).setNewPlaylistCheck(true);
@@ -366,37 +410,70 @@ public class PlayerActivity extends AppCompatActivity {
         }
     }
 
-    //Method that plays/pause/continue a song from where it paused
+    //Method that plays/pause/continue a song from where it paused with audio focus implemented
     public void playSong() {
         if (!playPauseButton) {
-            if (!hasStarted) {
-                try {
-                    Uri uri = ContentUris.withAppendedId(android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, currentSongList.get(currentSongSelected).getNewID());
-                    mp.reset();
-                    mp.setDataSource(getApplicationContext(), uri);
-                    mp.prepare();
-                    mp.start();
-                    hasStarted = true;
-                } catch (Exception e) {
-                    Log.e("Error: ", "Exception " + e);
+            //if (!audioFocusGranted && requestAudioFocus()) {
+                if (!hasStarted) {
+                    try {
+                        Uri uri = ContentUris.withAppendedId(android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, currentSongList.get(currentSongSelected).getNewID());
+                        mp.reset();
+                        mp.setDataSource(getApplicationContext(), uri);
+                        mp.prepare();
+                        mp.start();
+                        hasStarted = true;
+                    } catch (Exception e) {
+                        Log.e("Error: ", "Exception " + e);
+                    }
+                } else {
+                    try {
+                        mp.start();
+                    } catch (Exception e) {
+                        Log.e("Error: ", "Exception " + e);
+                    }
                 }
             } else {
-                try {
-                    mp.start();
-                } catch (Exception e) {
-                    Log.e("Error: ", "Exception " + e);
-                }
+                //if (audioFocusGranted && hasStarted) {
+                    if (mp.isPlaying()) {
+                        try {
+                            mp.pause();
+                        } catch (Exception e) {
+                            Log.e("Error: ", "Exception " + e);
+                        }
+                    }
+                //}
             }
-        } else {
-            if (mp.isPlaying()) {
-                try {
-                    mp.pause();
-                } catch (Exception e) {
-                    Log.e("Error: ", "Exception " + e);
-                }
+        //}
+    }
+
+    /**Handles the request of Audio Focus
+    private boolean requestAudioFocus() {
+        if (!audioFocusGranted) {
+            AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            // Request audio focus for play back
+            int result = audioManager.requestAudioFocus(audioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
+            if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                audioFocusGranted = true;
+            } else {
+                // FAILED
+                Log.e(TAG, "NO AUDIO FOCUS");
             }
         }
+        return audioFocusGranted;
     }
+
+    //Handles the abandon of Audio Focus
+    private void abandonAudioFocus() {
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        int result = audioManager.abandonAudioFocus(audioFocusChangeListener);
+        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+            audioFocusGranted = false;
+        } else {
+            // FAILED
+            Log.e(TAG, "NO AUDIO FOCUS");
+        }
+        audioFocusChangeListener = null;
+    }**/
 
     //Method that handles everything needed when we need to kill the MediaPlayer to release resources
     public void stopSong() {
@@ -406,6 +483,7 @@ public class PlayerActivity extends AppCompatActivity {
             mp.stop();
             mp.release();
             mp = null;
+            //abandonAudioFocus();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -418,7 +496,7 @@ public class PlayerActivity extends AppCompatActivity {
     //Ofc we are working in ms so it also converts it to an understandable value based on the format hh:mm:ss
     //NOTE: It hides the hh when isn't needed
     private void UpdateTimeDisplayed() {
-        if(mp.isPlaying()) {
+        if (mp.isPlaying()) {
             Runnable run = new Runnable() {
                 public void run() {
                     long duration = mp.getDuration();
